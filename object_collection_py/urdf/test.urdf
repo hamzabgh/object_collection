@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot name="x500-Base">
+  <link name="base_link">
+    <inertial>
+      <mass value="2.0"/>
+      <inertia ixx="0.02166666666666667" ixy="0" ixz="0" iyy="0.02166666666666667" iyz="0" izz="0.04000000000000001"/>
+    </inertial>
+    <visual name="base_link_visual">
+      <origin xyz="0 0 0.025" rpy="0 0 3.141592654"/>
+      <geometry>
+        <mesh filename="model://x500-Base/meshes/NXP-HGD-CF.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <visual name="5010_motor_base_0">
+      <origin xyz="0.174 0.174 0.032" rpy="0 0 -0.45"/>
+      <geometry>
+        <mesh filename="model://x500-Base/meshes/5010Base.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <visual name="5010_motor_base_1">
+      <origin xyz="-0.174 0.174 0.032" rpy="0 0 -0.45"/>
+      <geometry>
+        <mesh filename="model://x500-Base/meshes/5010Base.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <visual name="5010_motor_base_2">
+      <origin xyz="0.174 -0.174 0.032" rpy="0 0 -0.45"/>
+      <geometry>
+        <mesh filename="model://x500-Base/meshes/5010Base.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <visual name="5010_motor_base_3">
+      <origin xyz="-0.174 -0.174 0.032" rpy="0 0 -0.45"/>
+      <geometry>
+        <mesh filename="model://x500-Base/meshes/5010Base.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <visual name="NXP_FMUK66_FRONT">
+      <origin xyz="0.047 0.001 0.043" rpy="1 0 1.57"/>
+      <geometry>
+        <plane size="0.013 0.007"/>
+      </geometry>
+      <material>
+        <color rgba="1.0 1.0 1.0 1.0"/>
+      </material>
+    </visual>
+    <visual name="NXP_FMUK66_TOP">
+      <origin xyz="-0.023 0 0.0515" rpy="0 0 -1.57"/>
+      <geometry>
+        <plane size="0.013 0.007"/>
+      </geometry>
+      <material>
+        <color rgba="1.0 1.0 1.0 1.0"/>
+      </material>
+    </visual>
+    <visual name="RDDRONE_FMUK66_TOP">
+      <origin xyz="-0.03 0 0.0515" rpy="0 0 -1.57"/>
+      <geometry>
+        <plane size="0.032 0.0034"/>
+      </geometry>
+      <material>
+        <color rgba="1.0 1.0 1.0 1.0"/>
+      </material>
+    </visual>
+    <collision name="base_link_collision_0">
+      <origin xyz="0 0 0.007" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.35355339059327373 0.35355339059327373 0.05"/>
+      </geometry>
+    </collision>
+    <collision name="base_link_collision_1">
+      <origin xyz="0 -0.098 -0.123" rpy="-0.35 0 0"/>
+      <geometry>
+        <box size="0.015 0.015 0.21"/>
+      </geometry>
+    </collision>
+    <collision name="base_link_collision_2">
+      <origin xyz="0 0.098 -0.123" rpy="0.35 0 0"/>
+      <geometry>
+        <box size="0.015 0.015 0.21"/>
+      </geometry>
+    </collision>
+    <collision name="base_link_collision_3">
+      <origin xyz="0 -0.132 -0.2195" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.25 0.015 0.015"/>
+      </geometry>
+    </collision>
+    <collision name="base_link_collision_4">
+      <origin xyz="0 0.132 -0.2195" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.25 0.015 0.015"/>
+      </geometry>
+    </collision>
+  </link>
+  
+  <!-- Rotors -->
+  <link name="rotor_0">
+    <inertial>
+      <mass value="0.016076923076923075"/>
+      <inertia ixx="3.8464910483993325e-07" ixy="0" ixz="0" iyy="2.6115851691700804e-05" iyz="0" izz="2.649858234714004e-05"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.022 -0.14638461538461536 -0.016" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="model://x500-Base/meshes/1345_prop_ccw.stl" scale="0.8461538461538461 0.8461538461538461 0.8461538461538461"/>
+      </geometry>
+      <material>
+        <color rgba="0.3 0.3 0.3 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.2792307692307692 0.016923076923076923 0.0008461538461538462"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="rotor_0_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="rotor_0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <link name="rotor_1">
+    <inertial>
+      <mass value="0.016076923076923075"/>
+      <inertia ixx="3.8464910483993325e-07" ixy="0" ixz="0" iyy="2.6115851691700804e-05" iyz="0" izz="2.649858234714004e-05"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.022 -0.14638461538461536 -0.016" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="model://x500-Base/meshes/1345_prop_ccw.stl" scale="0.8461538461538461 0.8461538461538461 0.8461538461538461"/>
+      </geometry>
+      <material>
+        <color rgba="0.3 0.3 0.3 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.2792307692307692 0.016923076923076923 0.0008461538461538462"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="rotor_1_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="rotor_1"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <link name="rotor_2">
+    <inertial>
+      <mass value="0.016076923076923075"/>
+      <inertia ixx="3.8464910483993325e-07" ixy="0" ixz="0" iyy="2.6115851691700804e-05" iyz="0" izz="2.649858234714004e-05"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.022 -0.14638461538461536 -0.016" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="model://x500-Base/meshes/1345_prop_cw.stl" scale="0.8461538461538461 0.8461538461538461 0.8461538461538461"/>
+      </geometry>
+      <material>
+        <color rgba="0.3 0.3 0.3 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.2792307692307692 0.016923076923076923 0.0008461538461538462"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="rotor_2_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="rotor_2"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <link name="rotor_3">
+    <inertial>
+      <mass value="0.016076923076923075"/>
+      <inertia ixx="3.8464910483993325e-07" ixy="0" ixz="0" iyy="2.6115851691700804e-05" iyz="0" izz="2.649858234714004e-05"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0.022 -0.14638461538461536 -0.016" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="model://x500-Base/meshes/1345_prop_cw.stl" scale="0.8461538461538461 0.8461538461538461 0.8461538461538461"/>
+      </geometry>
+      <material>
+        <color rgba="0.3 0.3 0.3 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.2792307692307692 0.016923076923076923 0.0008461538461538462"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="rotor_3_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="rotor_3"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <!-- Sensors -->
+  <link name="sensor_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+    </visual>
+  </link>
+  
+  <joint name="sensor_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="sensor_link"/>
+    <origin xyz="0 0 0.1" rpy="0 0 0"/>
+  </joint>
+  
+  <sensor name="imu_sensor" type="imu">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <imu>
+      <update_rate>200</update_rate>
+      <noise>
+        <accel>
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </accel>
+        <rate>
+          <mean>0.0</mean>
+          <stddev>0.001</stddev>
+        </rate>
+      </noise>
+    </imu>
+  </sensor>
+  
+  <sensor name="magnetometer_sensor" type="magnetometer">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <magnetometer>
+      <update_rate>50</update_rate>
+      <noise>
+        <mean>0.0</mean>
+        <stddev>0.0002</stddev>
+      </noise>
+    </magnetometer>
+  </sensor>
+  
+  <sensor name="barometer_sensor" type="barometer">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <barometer>
+      <update_rate>50</update_rate>
+      <pressure>
+        <noise>
+          <mean>0.0</mean>
+          <stddev>0.03</stddev>
+        </noise>
+      </pressure>
+      <temperature>
+        <noise>
+          <mean>0.0</mean>
+          <stddev>0.5</stddev>
+        </noise>
+      </temperature>
+    </barometer>
+  </sensor>
+</robot>

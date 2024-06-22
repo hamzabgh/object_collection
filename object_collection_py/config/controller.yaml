@@ -1,0 +1,10 @@
+joint_state_broadcaster:
+  ros__parameters:
+    type: joint_state_broadcaster/JointStateBroadcaster
+    publish_rate: 50
+    joint_names:
+      - base_to_FL
+      - base_to_FR
+      - base_to_BL
+      - base_to_BR
+      - base_to_hand

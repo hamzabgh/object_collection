@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<robot name="box">
+
+  <link name="box_link">
+    <visual>
+      <geometry>
+        <box size="0.2 0.2 0.2"/>
+      </geometry>
+      <material name="box_material">
+        <color rgba="1 1 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.2 0.2 0.2"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.0"/>
+      <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+    </inertial>
+  </link>
+
+  <!-- Gazebo plugin to spawn the box -->
+  <gazebo reference="box_link">
+    <material>Gazebo/Yellow</material>
+    <turnGravityOff>true</turnGravityOff>
+    <!--<static>true</static>  Set the box to be static (not affected by gravity) -->
+  </gazebo>
+
+  <link name="hand_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.05 0.05 0.1"/> <!-- Adjust size as needed -->
+      </geometry>
+      <material name="silver">
+        <color rgba="0.75 0.75 0.75 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+
+  <!-- Define the joint between the hand link and the box link -->
+  <joint name="hand_to_box" type="fixed">
+    <parent link="hand_link"/>
+    <child link="box_link"/>
+    <origin xyz="0 0 -0.1" rpy="0 0 0"/> <!-- Adjust position as needed -->
+  </joint>
+
+  <!-- Gazebo details for hand_link -->
+  <gazebo reference="hand_link">
+    <material>Gazebo/Red</material>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+
+</robot>

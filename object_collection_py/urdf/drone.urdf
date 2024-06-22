@@ -1,0 +1,207 @@
+<?xml version="1.0"?>
+<robot name="Dron_gemini">
+
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.4 0.2 0.04"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.4 0.2 0.04"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="FL">
+    <visual>
+      <origin xyz="0.16 0.13 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.015" radius="0.065"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.16 0.13 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.015" radius="0.065"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="0.5" ixy="0.0" ixz="0.0" iyy="0.5" iyz="0.0" izz="0.5"/>
+    </inertial>
+  </link>
+
+  <link name="FR">
+    <visual>
+      <origin xyz="0.16 -0.13 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.015" radius="0.065"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.16 -0.13 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.015" radius="0.065"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="0.5" ixy="0.0" ixz="0.0" iyy="0.5" iyz="0.0" izz="0.5"/>
+    </inertial>
+  </link>
+
+  <link name="BL">
+    <visual>
+      <origin xyz="-0.09 0.13 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.015" radius="0.065"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="-0.09 0.13 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.015" radius="0.065"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="0.5" ixy="0.0" ixz="0.0" iyy="0.5" iyz="0.0" izz="0.5"/>
+    </inertial>
+  </link>
+
+  <link name="BR">
+    <visual>
+      <origin xyz="-0.09 -0.13 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.015" radius="0.065"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="-0.09 -0.13 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.015" radius="0.065"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="0.5" ixy="0.0" ixz="0.0" iyy="0.5" iyz="0.0" izz="0.5"/>
+    </inertial>
+  </link>
+
+  <joint name="base_to_FL" type="fixed">
+    <parent link="base_link"/>
+    <child link="FL"/>
+  </joint>
+
+  <joint name="base_to_FR" type="fixed">
+    <parent link="base_link"/>
+    <child link="FR"/>
+  </joint>
+
+  <joint name="base_to_BL" type="fixed">
+    <parent link="base_link"/>
+    <child link="BL"/>
+  </joint>
+
+  <joint name="base_to_BR" type="fixed">
+    <parent link="base_link"/>
+    <child link="BR"/>
+  </joint>
+
+  <gazebo reference="base_link">
+    <material>Gazebo/Blue</material>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+
+  <!-- Camera Link -->
+  <link name="camera_link">
+    <visual>
+      <origin xyz="0.1 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.1 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="base_to_camera" type="fixed">
+    <parent link="base_link"/>
+    <child link="camera_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <gazebo reference="camera_link">
+    <material>Gazebo/Blue</material>
+    <turnGravityOff>true</turnGravityOff>
+    <sensor type="camera" name="camera">
+      <camera>
+        <horizontal_fov>1.047</horizontal_fov>
+        <image>
+          <width>640</width>
+          <height>480</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.1</near>
+          <far>100</far>
+        </clip>
+      </camera>
+      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>30</updateRate>
+        <cameraName>camera</cameraName>
+        <frameName>camera_link</frameName>
+        <topicName>camera/image_raw</topicName>
+        <cameraInfoTopicName>camera/camera_info</cameraInfoTopicName>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <!-- Hand Link -->
+
+  <!-- Adjust hand link and joint as needed -->
+  <link name="hand_link">
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.05 0.05 0.1"/>
+      </geometry>
+      <material name="silver">
+        <color rgba="0.75 0.75 0.75 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Joint between base_link and hand_link -->
+  <joint name="base_to_hand" type="fixed">
+    <parent link="base_link"/>
+    <child link="hand_link"/>
+    <origin xyz="0.0 0.0 -0.2" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Gazebo details for hand_link -->
+  <gazebo reference="hand_link">
+    <material>Gazebo/Yellow</material>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+
+
+</robot>

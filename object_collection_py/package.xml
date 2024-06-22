@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>object_collection_py</name>
+  <version>0.0.0</version>
+  <description>ROS 2 package for object collection using computer vision</description>
+  <maintainer email="gemini@todo.todo">gemini</maintainer>
+  <license>Apache License 2.0</license>
+
+  <!-- Build tool dependencies -->
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <buildtool_depend>ament_python</buildtool_depend>
+
+  <!-- Runtime dependencies -->
+  <depend>rclpy</depend>
+  <depend>sensor_msgs</depend>
+  <depend>cv_bridge</depend>
+  <depend>numpy</depend>
+  <depend>gazebo_ros</depend>
+  <depend>urdf</depend>
+  <depend>xacro</depend>
+  <depend>OpenCV</depend> <!-- Move OpenCV to exec_depend -->
+  <depend>ros2_control</depend> <!-- Move ros2_control to exec_depend -->
+  <depend>controller_manager</depend> <!-- Move controller_manager to exec_depend -->
+
+  <!-- Test dependencies -->
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+  <test_depend>python3-pytest</test_depend>
+
+  <!-- Build dependencies -->
+  <build_depend>gazebo_dev</build_depend>
+
+  <!-- Execution dependencies -->
+  <exec_depend>gazebo_dev</exec_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>
